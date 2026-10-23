@@ -6,8 +6,8 @@ document.getElementById("year").textContent = new Date().getFullYear();
 // 2. Paste your Project URL and your "anon public" key below.
 //    (The anon key is safe to put in front-end code, as long as
 //     Row Level Security is ON and only allows INSERT.)
-const SUPABASE_URL = "PASTE_YOUR_PROJECT_URL_HERE";
-const SUPABASE_ANON_KEY = "PASTE_YOUR_ANON_PUBLIC_KEY_HERE";
+const SUPABASE_URL = "https://ifewunkywpkaikhbobbv.supabase.co/rest/v1/";
+const SUPABASE_ANON_KEY = "sb_publishable_a4a59bPWDdw8DexIQ6VpKw_QNb-MVAy";
 
 const supabaseReady =
   SUPABASE_URL.startsWith("https://") && !SUPABASE_ANON_KEY.startsWith("PASTE");
