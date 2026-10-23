@@ -10,7 +10,7 @@ const SUPABASE_URL = "https://ifewunkywpkaikhbobbv.supabase.co/rest/v1/";
 const SUPABASE_ANON_KEY = "sb_publishable_a4a59bPWDdw8DexIQ6VpKw_QNb-MVAy";
 
 const supabaseReady =
-  SUPABASE_URL.startsWith("https://") && !SUPABASE_ANON_KEY.startsWith("PASTE");
+  SUPABASE_URL.startsWith("https://ifewunkywpkaikhbobbv.supabase.co/rest/v1/") && !SUPABASE_ANON_KEY.startsWith("sb_publishable_a4a59bPWDdw8DexIQ6VpKw_QNb-MVAy");
 
 const db = supabaseReady
   ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
