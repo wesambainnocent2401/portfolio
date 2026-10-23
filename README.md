@@ -10,10 +10,10 @@ My personal portfolio website, showing who I am, my skills and my projects.
 - Works on phones and computers
 
 ## Built with
-HTML, CSS, JavaScript, Supabase
+HTML, CSS, , Supabase
 
 ## Live site
-Coming soon (hosted on Netlify)
+ innocent-wesamba.netlify.app (hosted on Netlify)
 
 ## Contact
 wesambainnocent0@gmail.com
