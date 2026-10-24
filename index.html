@@ -3,166 +3,690 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wesamba Innocent | Computer Science Student & Web Developer</title>
-  <meta name="description" content="Portfolio of Wesamba Innocent, a Computer Science student at Kibabii University building websites and small software.">
+
+  <meta name="theme-color" content="#050d1c">
+  <meta name="description" content="Wesamba Innocent is a Computer Science student and web developer at Kibabii University, building practical web applications.">
+  <meta name="author" content="Wesamba Innocent">
+
+  <meta property="og:title" content="Wesamba Innocent | Developer Portfolio">
+  <meta property="og:description" content="Computer Science student and web developer building practical digital solutions.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/innocent.png">
+
+  <title>Wesamba Innocent | Developer Portfolio</title>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
+  <!-- Main JavaScript -->
+  <script src="script.js" defer></script>
 </head>
+
 <body>
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- HEADER -->
   <header class="site-header">
-    <a class="brand" href="#top">Innocent W.</a>
-    <nav aria-label="Main">
+
+    <a class="brand" href="#home">
+      <span class="brand-mark">WI<span>.</span></span>
+      <span>Wesamba <b>Innocent</b></span>
+    </a>
+
+    <button class="menu-toggle" id="menu-toggle"
+      type="button"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="site-nav">
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+
+      <a href="#home" class="active">Home</a>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
+
     </nav>
+
+    <button class="theme-toggle"
+      id="theme-toggle"
+      type="button"
+      aria-label="Switch to light theme"
+      title="Toggle theme">
+
+      <span class="theme-icon">☼</span>
+
+    </button>
+
   </header>
 
-  <main id="top">
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="flag-rule" aria-hidden="true"><span></span><span></span><span></span></div>
-      <h1>Wesamba<br>Innocent</h1>
-      <p class="lead">Computer Science student at Kibabii University. I build websites and small software, and I learn by shipping real projects.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#projects">See my projects</a>
-        <a class="btn btn-ghost" href="#contact">Send a message</a>
+  <main id="main">
+
+    <!-- HERO SECTION -->
+    <section class="hero section-shell" id="home">
+
+      <div class="hero-copy">
+
+        <p class="eyebrow">
+          <span></span> HELLO, I'M
+        </p>
+
+        <h1>
+          Wesamba <span>Innocent</span>
+        </h1>
+
+        <h2 class="hero-role">
+          Computer Science Student <i>&amp;</i> Web Developer
+        </h2>
+
+        <p class="hero-intro">
+          I build useful websites and practical software, learn by
+          creating real projects, and enjoy turning everyday problems
+          into digital solutions.
+        </p>
+
+        <div class="button-row">
+
+          <a class="button button-primary" href="#projects">
+            Explore my projects <span>↗</span>
+          </a>
+
+          <a class="button button-outline" href="#contact">
+            Get in touch
+          </a>
+
+        </div>
+
+        <div class="social-links">
+
+          <a href="https://github.com/wesambainnocent2401"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="GitHub">GH</a>
+
+          <a href="mailto:wesambainnocent0@gmail.com"
+             aria-label="Email">@</a>
+
+        </div>
+
       </div>
-      <pre class="code-card" aria-label="A short code snippet about me"><code><span class="c-kw">const</span> innocent = {
-  studying: <span class="c-str">"Computer Science"</span>,
-  school:   <span class="c-str">"Kibabii University"</span>,
-  graduate: <span class="c-num">2030</span>,
-  languages: [<span class="c-str">"C"</span>, <span class="c-str">"JavaScript"</span>, <span class="c-str">"Python"</span>],
-  learning: <span class="c-str">"every day"</span>
+
+
+      <div class="hero-visual">
+
+        <div class="portrait-glow"></div>
+
+        <img
+          class="hero-photo"
+          src="assets/innocent.png"
+          alt="Wesamba Innocent"
+          fetchpriority="high">
+
+        <div class="code-window">
+
+          <div class="window-bar">
+            <span></span>
+            <span></span>
+            <span></span>
+            <small>about-me.js</small>
+          </div>
+
+          <pre><code><span class="code-purple">const</span> developer = {
+  name: <span class="code-green">"Wesamba"</span>,
+  field: <span class="code-green">"Computer Science"</span>,
+  school: <span class="code-green">"Kibabii University"</span>,
+  tools: [<span class="code-green">"React"</span>, <span class="code-green">"JavaScript"</span>],
+  mindset: <span class="code-green">"Always learning"</span>
 };</code></pre>
+
+        </div>
+
+        <p class="floating-note">
+          Building today.<br>
+          <strong>Learning always.</strong>
+        </p>
+
+      </div>
+
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <h2>About me</h2>
+
+    <!-- ABOUT SECTION -->
+    <section class="section-shell section-block" id="about">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          <span></span> A LITTLE ABOUT ME
+        </p>
+
+        <h2>
+          Curious mind. <span>Practical builder.</span>
+        </h2>
+
+      </div>
+
+
       <div class="about-layout">
-        <img class="about-photo" src="innocent.png" alt="Photo of Wesamba Innocent" width="220" height="220">
-        <div class="about-grid">
-        <p>I'm a first-year Computer Science student at Kibabii University in Bungoma County, originally from Kakamega. I went to St. Xavier Shikoti for high school.</p>
-        <p>I'm teaching myself HTML, CSS and JavaScript in my own time, and I'm learning Python and C in my university course. I also use AI tools to build faster, and I'm good at writing clear prompts. I like projects that solve real problems for people around me, like helping small businesses keep track of their stock.</p>
-        <p>I speak English and Kiswahili. I'm looking for internships, mentors and small projects where I can learn and contribute.</p>
+
+        <div class="about-copy">
+
+          <p>
+            I'm a first-year Computer Science student at Kibabii
+            University in Bungoma County, originally from Kakamega.
+            I went to St. Xavier Shikoti for high school.
+          </p>
+
+          <p>
+            I'm teaching myself HTML, CSS and JavaScript, while
+            learning Python and C through my university course.
+            I also use AI tools as part of my development workflow,
+            while taking responsibility for planning, testing and
+            improving what I build.
+          </p>
+
+          <p>
+            I enjoy projects that solve practical problems for
+            people around me, such as helping small businesses
+            manage their stock. I speak English and Kiswahili,
+            and I'm open to learning opportunities, mentorship
+            and suitable project collaborations.
+          </p>
+
+          <div class="fact-row">
+
+            <span>⌖ Bungoma, Kenya</span>
+            <span>⌘ Kibabii University</span>
+            <span>◉ English &amp; Kiswahili</span>
+
+          </div>
+
+        </div>
+
+
+        <aside class="about-card">
+
+          <img
+            src="assets/innocent.png"
+            alt="Portrait of Wesamba Innocent"
+            loading="lazy">
+
+          <div class="about-card-caption">
+
+            <strong>Wesamba Innocent</strong>
+
+            <span>
+              Computer Science Student &amp; Web Developer
+            </span>
+
+          </div>
+
+        </aside>
+
       </div>
-      </div>
+
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section">
-      <h2>Skills</h2>
-      <ul class="skills">
-        <li><strong>HTML</strong> <span>Self-taught, page structure</span></li>
-        <li><strong>CSS</strong> <span>Self-taught, layouts and responsive design</span></li>
-        <li><strong>JavaScript</strong> <span>Self-taught, interactive pages</span></li>
-        <li><strong>React &amp; Tailwind CSS</strong> <span>Used to build StockFlow</span></li>
-        <li><strong>Writing AI prompts</strong> <span>Guiding AI tools to build working apps</span></li>
-        <li><strong>GitHub</strong> <span>Saving and sharing code</span></li>
-        <li><strong>Supabase</strong> <span>Databases and logins for web apps</span></li>
-        <li><strong>Netlify &amp; Vercel</strong> <span>Putting websites online</span></li>
-        <li><strong>Python</strong> <span>Learning in my university course</span></li>
-        <li><strong>C</strong> <span>Learning in my university course</span></li>
-      </ul>
+
+    <!-- SKILLS SECTION -->
+    <section class="section-shell section-block" id="skills">
+
+      <div class="section-heading section-heading-row">
+
+        <div>
+
+          <p class="eyebrow">
+            <span></span> MY TOOLKIT
+          </p>
+
+          <h2>Skills &amp; technologies</h2>
+
+        </div>
+
+        <p class="heading-note">
+          Growing through practice, one project at a time.
+        </p>
+
+      </div>
+
+
+      <div class="skills-grid">
+
+        <article class="skill-card">
+
+          <span class="skill-index">01</span>
+
+          <h3>Frontend</h3>
+
+          <ul>
+            <li>HTML</li>
+            <li>CSS &amp; responsive design</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>Tailwind CSS</li>
+          </ul>
+
+        </article>
+
+
+        <article class="skill-card">
+
+          <span class="skill-index">02</span>
+
+          <h3>Backend &amp; data</h3>
+
+          <ul>
+            <li>Supabase</li>
+            <li>Appwrite</li>
+            <li>Python — learning</li>
+            <li>C — learning</li>
+          </ul>
+
+        </article>
+
+
+        <article class="skill-card">
+
+          <span class="skill-index">03</span>
+
+          <h3>Tools &amp; deployment</h3>
+
+          <ul>
+            <li>Git &amp; GitHub</li>
+            <li>Netlify</li>
+            <li>Vercel</li>
+            <li>AI-assisted development</li>
+          </ul>
+
+        </article>
+
+
+        <article class="skill-card">
+
+          <span class="skill-index">04</span>
+
+          <h3>Working strengths</h3>
+
+          <ul>
+            <li>Problem solving</li>
+            <li>Writing clear prompts</li>
+            <li>Self-directed learning</li>
+            <li>Communication</li>
+          </ul>
+
+        </article>
+
+      </div>
+
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-      <h2>Projects</h2>
 
-      <article class="featured">
-        <div class="project-head">
+    <!-- PROJECTS SECTION -->
+    <section class="section-shell section-block" id="projects">
+
+      <div class="section-heading section-heading-row">
+
+        <div>
+
+          <p class="eyebrow">
+            <span></span> SELECTED WORK
+          </p>
+
+          <h2>Projects I've built</h2>
+
+        </div>
+
+        <a class="text-link"
+           href="https://github.com/wesambainnocent2401"
+           target="_blank"
+           rel="noopener noreferrer">
+
+          More on GitHub ↗
+
+        </a>
+
+      </div>
+
+
+      <div class="projects-grid">
+
+        <!-- STOCKFLOW -->
+        <article class="project-card">
+
+          <div class="project-topline">
+
+            <span class="project-number">PROJECT 01</span>
+
+            <span class="project-status">
+              <i></i> Live
+            </span>
+
+          </div>
+
           <h3>StockFlow</h3>
-          <span class="status status-live">Live</span>
-        </div>
-        <p class="featured-lead">An inventory management web app for small and medium businesses, with prices in Kenya shillings (KSh).</p>
-        <p>It helps a business keep track of what it has, what it sells and who it buys from, all in one place.</p>
-        <ul class="feature-list">
-          <li>Products and stock levels</li>
-          <li>Sales and purchases</li>
-          <li>Suppliers and customers</li>
-          <li>Reports and settings</li>
-        </ul>
-        <p class="ai-note">I built StockFlow with the help of AI. I wrote the prompts, decided what the app should do, and tested it until it worked.</p>
-        <p class="tags">React, Tailwind CSS</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://stockflow-wesamba.netlify.app/app#dashboard" target="_blank" rel="noopener">Try the live app</a>
-          <a class="btn btn-ghost" href="https://github.com/wesambainnocent2401" target="_blank" rel="noopener">View on GitHub</a>
-        </div>
-      </article>
 
-      <article class="featured">
-        <div class="project-head">
+          <p class="project-type">
+            Inventory management web app
+          </p>
+
+          <p>
+            A tool designed to help small and medium businesses
+            keep track of products, stock levels, sales, purchases,
+            suppliers and customers, with prices in Kenyan shillings.
+          </p>
+
+          <ul class="project-features">
+            <li>Product and stock tracking</li>
+            <li>Sales and purchase records</li>
+            <li>Supplier and customer management</li>
+            <li>Reports and settings</li>
+          </ul>
+
+          <p class="project-note">
+            Built with AI assistance; I planned the features,
+            guided implementation and tested the app.
+          </p>
+
+          <div class="tag-row">
+            <span>React</span>
+            <span>Tailwind CSS</span>
+            <span>Supabase</span>
+          </div>
+
+          <div class="project-actions">
+
+            <a class="button button-primary button-small"
+               href="https://stockflow-wesamba.netlify.app/app#dashboard"
+               target="_blank"
+               rel="noopener noreferrer">
+
+              Open live app ↗
+
+            </a>
+
+            <a class="button button-outline button-small"
+               href="https://github.com/wesambainnocent2401"
+               target="_blank"
+               rel="noopener noreferrer">
+
+              GitHub ↗
+
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- JOBCONNECT -->
+        <article class="project-card">
+
+          <div class="project-topline">
+
+            <span class="project-number">PROJECT 02</span>
+
+            <span class="project-status">
+              <i></i> Version 1
+            </span>
+
+          </div>
+
           <h3>JobConnect</h3>
-          <span class="status status-live">Live, version 1</span>
-        </div>
-        <p class="featured-lead">A job board that connects job seekers and employers.</p>
-        <p>Employers post jobs and list the qualifications they need. Job seekers create a profile, browse jobs and apply. My next step is to automatically pick the best-qualified applicants when many people apply.</p>
-        <ul class="feature-list">
-          <li>Job listings with details</li>
-          <li>Separate job seeker and employer pages</li>
-          <li>Register and login</li>
-          <li>Employer dashboard with applications</li>
-        </ul>
-        <p class="ai-note">I built the first version with the help of AI, and I'm now improving it.</p>
-        <p class="tags">HTML, CSS, JavaScript, Appwrite</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://wesambainnocent2401.github.io/Jobconnect/" target="_blank" rel="noopener">Try the live app</a>
-          <a class="btn btn-ghost" href="https://github.com/wesambainnocent2401/Jobconnect" target="_blank" rel="noopener">View on GitHub</a>
-        </div>
-      </article>
 
-      <h3 class="next-title">Next on my list</h3>
-      <ul class="next-list">
-        <li><strong>School Portal</strong> <span>Student and admin sides, using Python and Flask</span></li>
-        <li><strong>Online Marketplace</strong> <span>Sellers post products, buyers place orders</span></li>
-        <li><strong>IoT Robot Car</strong> <span>A Raspberry Pi car controlled with Python</span></li>
-        <li><strong>Home Weather Station</strong> <span>Sensor readings on a web dashboard</span></li>
-      </ul>
+          <p class="project-type">
+            Job board platform
+          </p>
+
+          <p>
+            A platform concept connecting employers with job seekers.
+            Employers can publish opportunities while job seekers
+            can create profiles, browse listings and apply.
+          </p>
+
+          <ul class="project-features">
+            <li>Job listings and requirements</li>
+            <li>Separate employer and seeker areas</li>
+            <li>Registration and login</li>
+            <li>Employer application dashboard</li>
+          </ul>
+
+          <p class="project-note">
+            The first version was built with AI assistance
+            and is being improved.
+          </p>
+
+          <div class="tag-row">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+            <span>Appwrite</span>
+          </div>
+
+          <div class="project-actions">
+
+            <a class="button button-primary button-small"
+               href="https://wesambainnocent2401.github.io/Jobconnect/"
+               target="_blank"
+               rel="noopener noreferrer">
+
+              Open live app ↗
+
+            </a>
+
+            <a class="button button-outline button-small"
+               href="https://github.com/wesambainnocent2401/Jobconnect"
+               target="_blank"
+               rel="noopener noreferrer">
+
+              GitHub ↗
+
+            </a>
+
+          </div>
+
+        </article>
+
+      </div>
+
+
+      <!-- UPCOMING PROJECTS -->
+      <div class="up-next">
+
+        <div>
+          <span class="up-next-icon">↗</span>
+          <strong>What's next</strong>
+          <small>Ideas I'm exploring</small>
+        </div>
+
+        <p>
+          <b>School Portal</b>
+          <span>Python &amp; Flask</span>
+        </p>
+
+        <p>
+          <b>Online Marketplace</b>
+          <span>Seller and buyer workflows</span>
+        </p>
+
+        <p>
+          <b>IoT Robot Car</b>
+          <span>Raspberry Pi &amp; Python</span>
+        </p>
+
+        <p>
+          <b>Weather Station</b>
+          <span>Sensor data dashboard</span>
+        </p>
+
+      </div>
+
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="section contact">
-      <h2>Contact</h2>
-      <p class="section-note">Have a project, an internship, or advice for a student? Send me a message and I'll reply by email.</p>
 
-      <form id="contact-form" novalidate>
-        <label for="name">Your name</label>
-        <input id="name" name="name" type="text" autocomplete="name" required>
+    <!-- CONTACT SECTION -->
+    <section class="section-shell section-block contact-section" id="contact">
 
-        <label for="email">Your email</label>
-        <input id="email" name="email" type="email" autocomplete="email" required>
+      <div class="contact-copy">
 
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+        <p class="eyebrow">
+          <span></span> GET IN TOUCH
+        </p>
 
-        <!-- Hidden trap field: real people leave it empty, spam bots fill it -->
-        <input type="text" name="website" id="website" class="trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <h2>
+          Let's build <span>something useful.</span>
+        </h2>
 
-        <button class="btn btn-primary" type="submit" id="send-btn">Send message</button>
-        <p id="form-status" role="status" aria-live="polite"></p>
+        <p>
+          Have a project idea, an internship opportunity,
+          or advice for a student developer? Send me a message.
+        </p>
+
+        <a class="contact-email"
+           href="mailto:wesambainnocent0@gmail.com">
+
+          ✉ wesambainnocent0@gmail.com
+
+        </a>
+
+        <a class="contact-github"
+           href="https://github.com/wesambainnocent2401"
+           target="_blank"
+           rel="noopener noreferrer">
+
+          GH github.com/wesambainnocent2401
+
+        </a>
+
+      </div>
+
+
+      <!-- CONTACT FORM -->
+      <form id="contact-form" class="contact-form">
+
+        <div class="form-row">
+
+          <div class="field">
+            <label for="name">Your name</label>
+
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              maxlength="100"
+              required>
+          </div>
+
+          <div class="field">
+            <label for="email">Email address</label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              maxlength="254"
+              required>
+          </div>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="message">Your message</label>
+
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            maxlength="3000"
+            required></textarea>
+
+        </div>
+
+
+        <!-- Anti-spam field -->
+        <div class="trap-wrap" aria-hidden="true">
+
+          <label for="website">Leave this field empty</label>
+
+          <input
+            id="website"
+            name="website"
+            type="text"
+            tabindex="-1"
+            autocomplete="off">
+
+        </div>
+
+
+        <div class="form-bottom">
+
+          <span id="form-status" role="status" aria-live="polite">
+            Messages are welcome.
+          </span>
+
+          <button
+            class="button button-primary"
+            type="submit"
+            id="send-btn">
+
+            Send message <span>↗</span>
+
+          </button>
+
+        </div>
+
+        <p class="privacy-note">
+          Your details are used only to respond to your message.
+        </p>
+
       </form>
 
-      <p class="direct">Prefer email? Write to <a href="mailto:wesambainnocent0@gmail.com">wesambainnocent0@gmail.com</a></p>
-      <p class="direct">
-        <a href="https://github.com/wesambainnocent2401" target="_blank" rel="noopener">GitHub</a>
-      </p>
     </section>
 
   </main>
 
+
+  <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="flag-rule" aria-hidden="true"><span></span><span></span><span></span></div>
-    <p>&copy; <span id="year"></span> Wesamba Innocent. Built in Bungoma, Kenya.</p>
+
+    <a class="brand" href="#home">
+
+      <span class="brand-mark">WI<span>.</span></span>
+
+      <span>Wesamba <b>Innocent</b></span>
+
+    </a>
+
+    <p>
+      © <span id="year"></span> Wesamba Innocent · Built in Kenya.
+    </p>
+
+    <a class="back-top" href="#home">
+      Back to top ↑
+    </a>
+
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="script.js"></script>
 </body>
-</html>
+                                         </html>
