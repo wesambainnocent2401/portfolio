@@ -1,67 +1,423 @@
-// ---------- Footer year ----------
-document.getElementById("year").textContent = new Date().getFullYear();
+/* =========================================
+   WESAMBA INNOCENT - PORTFOLIO JAVASCRIPT
+========================================= */
 
-// ---------- Supabase setup ----------
-// 1. Go to supabase.com > your project > Settings > API
-// 2. Paste your Project URL and your "anon public" key below.
-//    (The anon key is safe to put in front-end code, as long as
-//     Row Level Security is ON and only allows INSERT.)
-const SUPABASE_URL = "https://ifewunkywpkaikhbobbv.supabase.co/rest/v1/";
-const SUPABASE_ANON_KEY = "sb_publishable_a4a59bPWDdw8DexIQ6VpKw_QNb-MVAy";
 
-const supabaseReady =
-  SUPABASE_URL.startsWith("https://ifewunkywpkaikhbobbv.supabase.co/rest/v1/") && !SUPABASE_ANON_KEY.startsWith("sb_publishable_a4a59bPWDdw8DexIQ6VpKw_QNb-MVAy");
+/* =========================================
+   SUPABASE CONFIGURATION
+========================================= */
 
-const db = supabaseReady
-  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-  : null;
+// Using the credentials from your original script.
+// The publishable key is designed for frontend use.
+// Keep Row Level Security enabled in Supabase.
 
-// ---------- Contact form ----------
-const form = document.getElementById("contact-form");
-const statusEl = document.getElementById("form-status");
-const sendBtn = document.getElementById("send-btn");
+const SUPABASE_URL = "https://ifewunkywpkaikhbobbv.supabase.co";
 
-function showStatus(text, type) {
-  statusEl.textContent = text;
-  statusEl.className = type; // "ok" or "err"
+const SUPABASE_ANON_KEY =
+  "sb_publishable_a4a59bPWDdw8DexIQ6VpKw_QNb-MVAy";
+
+let db = null;
+
+
+function initializeSupabase() {
+
+  if (!window.supabase) {
+    console.error("Supabase library was not loaded.");
+    return false;
+  }
+
+  try {
+
+    db = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
+
+    console.log("Supabase initialized successfully.");
+
+    return true;
+
+  } catch (error) {
+
+    console.error("Supabase initialization failed:", error);
+
+    return false;
+
+  }
+
 }
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
 
-  const name = form.name.value.trim();
-  const email = form.email.value.trim();
-  const message = form.message.value.trim();
+initializeSupabase();
 
-  // Spam trap: bots fill this hidden field, people don't
-  if (form.website.value) return;
 
-  if (!name || !email || !message) {
-    showStatus("Please fill in your name, email and message.", "err");
-    return;
-  }
-  if (!/^\S+@\S+\.\S+$/.test(email)) {
-    showStatus("That email address doesn't look right. Check it and try again.", "err");
-    return;
-  }
-  if (!db) {
-    showStatus("The message box isn't connected yet. Please email me directly instead.", "err");
-    return;
-  }
+/* =========================================
+   FOOTER YEAR
+========================================= */
 
-  sendBtn.disabled = true;
-  sendBtn.textContent = "Sending...";
+const yearElement = document.getElementById("year");
 
-  const { error } = await db.from("messages").insert({ name, email, message });
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
 
-  sendBtn.disabled = false;
-  sendBtn.textContent = "Send message";
 
-  if (error) {
-    console.error(error);
-    showStatus("Your message didn't send. Please try again or email me directly.", "err");
+/* =========================================
+   MOBILE NAVIGATION
+========================================= */
+
+const menuToggle = document.getElementById("menu-toggle");
+const siteNav = document.getElementById("site-nav");
+const navLinks = document.querySelectorAll(".nav-link");
+
+
+if (menuToggle && siteNav) {
+
+  menuToggle.addEventListener("click", () => {
+
+    const isOpen = siteNav.classList.toggle("open");
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      String(isOpen)
+    );
+
+  });
+
+
+  navLinks.forEach((link) => {
+
+    link.addEventListener("click", () => {
+
+      siteNav.classList.remove("open");
+
+      menuToggle.setAttribute("aria-expanded", "false");
+
+    });
+
+  });
+
+
+  document.addEventListener("click", (event) => {
+
+    const clickedInsideMenu =
+      siteNav.contains(event.target) ||
+      menuToggle.contains(event.target);
+
+    if (!clickedInsideMenu) {
+
+      siteNav.classList.remove("open");
+
+      menuToggle.setAttribute("aria-expanded", "false");
+
+    }
+
+  });
+
+}
+
+
+/* =========================================
+   THEME TOGGLE
+========================================= */
+
+const themeToggle = document.getElementById("theme-toggle");
+
+
+function updateThemeButton() {
+
+  if (!themeToggle) return;
+
+  const isLight =
+    document.body.classList.contains("light-theme");
+
+  themeToggle.textContent = isLight ? "☾" : "☀";
+
+  themeToggle.setAttribute(
+    "aria-label",
+    isLight ? "Switch to dark theme" : "Switch to light theme"
+  );
+
+}
+
+
+function loadSavedTheme() {
+
+  const savedTheme = localStorage.getItem("portfolio-theme");
+
+  if (savedTheme === "light") {
+
+    document.body.classList.add("light-theme");
+
   } else {
-    form.reset();
-    showStatus("Message sent. Thank you, I'll reply by email.", "ok");
+
+    document.body.classList.remove("light-theme");
+
   }
-});
+
+  updateThemeButton();
+
+}
+
+
+loadSavedTheme();
+
+
+if (themeToggle) {
+
+  themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("light-theme");
+
+    const isLight =
+      document.body.classList.contains("light-theme");
+
+    localStorage.setItem(
+      "portfolio-theme",
+      isLight ? "light" : "dark"
+    );
+
+    updateThemeButton();
+
+  });
+
+}
+
+
+/* =========================================
+   ACTIVE NAVIGATION
+========================================= */
+
+const sections = document.querySelectorAll("main section[id]");
+
+
+if ("IntersectionObserver" in window) {
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+
+      entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+
+          const currentId = entry.target.id;
+
+          navLinks.forEach((link) => {
+
+            link.classList.toggle(
+              "active",
+              link.getAttribute("href") === `#${currentId}`
+            );
+
+          });
+
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.35
+    }
+  );
+
+
+  sections.forEach((section) => {
+    sectionObserver.observe(section);
+  });
+
+}
+
+
+/* =========================================
+   CONTACT FORM
+========================================= */
+
+const contactForm = document.getElementById("contact-form");
+
+const formStatus = document.getElementById("form-status");
+
+const submitButton = contactForm
+  ? contactForm.querySelector(".submit-btn")
+  : null;
+
+const buttonText = contactForm
+  ? contactForm.querySelector(".button-text")
+  : null;
+
+const buttonLoading = contactForm
+  ? contactForm.querySelector(".button-loading")
+  : null;
+
+
+function showStatus(message, type) {
+
+  if (!formStatus) return;
+
+  formStatus.textContent = message;
+
+  formStatus.className = `form-status ${type}`;
+
+}
+
+
+function setSubmitting(isSubmitting) {
+
+  if (!submitButton) return;
+
+  submitButton.disabled = isSubmitting;
+
+  if (buttonText) {
+    buttonText.hidden = isSubmitting;
+  }
+
+  if (buttonLoading) {
+    buttonLoading.hidden = !isSubmitting;
+  }
+
+}
+
+
+if (contactForm) {
+
+  contactForm.addEventListener("submit", async (event) => {
+
+    event.preventDefault();
+
+    showStatus("", "");
+
+    // Basic bot filtering.
+    const websiteField = contactForm.elements["website"];
+
+    if (websiteField && websiteField.value.trim() !== "") {
+      showStatus("Unable to submit this message.", "error");
+      return;
+    }
+
+
+    const name = contactForm.elements["name"].value.trim();
+
+    const email = contactForm.elements["email"].value.trim();
+
+    const message = contactForm.elements["message"].value.trim();
+
+
+    // Validate required fields.
+    if (!name || !email || !message) {
+
+      showStatus(
+        "Please complete all the required fields.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    if (name.length > 100 || email.length > 254 || message.length > 3000) {
+
+      showStatus(
+        "One or more fields exceed the allowed length.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    // Check email format.
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(email)) {
+
+      showStatus(
+        "Please enter a valid email address.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    // Check Supabase connection.
+    if (!db) {
+
+      showStatus(
+        "The message service is currently unavailable. Please email me directly.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    setSubmitting(true);
+
+
+    try {
+
+      const { error } = await db
+        .from("messages")
+        .insert([
+          {
+            name: name,
+            email: email,
+            message: message
+          }
+        ]);
+
+
+      if (error) {
+
+        console.error("Supabase submission error:", error);
+
+        throw error;
+
+      }
+
+
+      showStatus(
+        "Your message has been sent successfully. Thank you!",
+        "success"
+      );
+
+      contactForm.reset();
+
+
+    } catch (error) {
+
+      console.error("Contact form error:", error);
+
+      showStatus(
+        "Sorry, your message could not be sent. Please try again or email me directly.",
+        "error"
+      );
+
+    } finally {
+
+      setSubmitting(false);
+
+    }
+
+  });
+
+}
+
+
+/* =========================================
+   CONSOLE MESSAGE
+========================================= */
+
+console.log(
+  "%cWelcome to Wesamba's Portfolio!",
+  "color: #4388ff; font-size: 18px; font-weight: bold;"
+);
+
+console.log(
+  "%cThanks for checking out the code.",
+  "color: #9ba9c0; font-size: 12px;"
+);
