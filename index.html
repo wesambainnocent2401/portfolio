@@ -11,20 +11,19 @@
   <meta property="og:title" content="Wesamba Innocent | Developer Portfolio">
   <meta property="og:description" content="Computer Science student and web developer building practical digital solutions.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/innocent.png">
+  <meta property="og:image" content="https://innocent-wesamba.netlify.app/innocent.png">
 
   <title>Wesamba Innocent | Developer Portfolio</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Supabase -->
+  <!-- Supabase (must load before script.js) -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 
   <!-- Main JavaScript -->
@@ -48,21 +47,17 @@
       aria-label="Open navigation"
       aria-expanded="false"
       aria-controls="site-nav">
-
       <span></span>
       <span></span>
       <span></span>
-
     </button>
 
     <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-
-      <a href="#home" class="active">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#contact" class="nav-link">Contact</a>
     </nav>
 
     <button class="theme-toggle"
@@ -70,9 +65,7 @@
       type="button"
       aria-label="Switch to light theme"
       title="Toggle theme">
-
-      <span class="theme-icon">☼</span>
-
+      <span class="theme-icon">☀</span>
     </button>
 
   </header>
@@ -104,19 +97,15 @@
         </p>
 
         <div class="button-row">
-
           <a class="button button-primary" href="#projects">
             Explore my projects <span>↗</span>
           </a>
-
           <a class="button button-outline" href="#contact">
             Get in touch
           </a>
-
         </div>
 
         <div class="social-links">
-
           <a href="https://github.com/wesambainnocent2401"
              target="_blank"
              rel="noopener noreferrer"
@@ -124,7 +113,6 @@
 
           <a href="mailto:wesambainnocent0@gmail.com"
              aria-label="Email">@</a>
-
         </div>
 
       </div>
@@ -212,11 +200,9 @@
           </p>
 
           <div class="fact-row">
-
             <span>⌖ Bungoma, Kenya</span>
             <span>⌘ Kibabii University</span>
             <span>◉ English &amp; Kiswahili</span>
-
           </div>
 
         </div>
@@ -230,13 +216,8 @@
             loading="lazy">
 
           <div class="about-card-caption">
-
             <strong>Wesamba Innocent</strong>
-
-            <span>
-              Computer Science Student &amp; Web Developer
-            </span>
-
+            <span>Computer Science Student &amp; Web Developer</span>
           </div>
 
         </aside>
@@ -252,13 +233,10 @@
       <div class="section-heading section-heading-row">
 
         <div>
-
           <p class="eyebrow">
             <span></span> MY TOOLKIT
           </p>
-
           <h2>Skills &amp; technologies</h2>
-
         </div>
 
         <p class="heading-note">
@@ -271,11 +249,8 @@
       <div class="skills-grid">
 
         <article class="skill-card">
-
           <span class="skill-index">01</span>
-
           <h3>Frontend</h3>
-
           <ul>
             <li>HTML</li>
             <li>CSS &amp; responsive design</li>
@@ -283,55 +258,39 @@
             <li>React</li>
             <li>Tailwind CSS</li>
           </ul>
-
         </article>
 
-
         <article class="skill-card">
-
           <span class="skill-index">02</span>
-
           <h3>Backend &amp; data</h3>
-
           <ul>
             <li>Supabase</li>
             <li>Appwrite</li>
             <li>Python — learning</li>
             <li>C — learning</li>
           </ul>
-
         </article>
 
-
         <article class="skill-card">
-
           <span class="skill-index">03</span>
-
           <h3>Tools &amp; deployment</h3>
-
           <ul>
             <li>Git &amp; GitHub</li>
             <li>Netlify</li>
             <li>Vercel</li>
             <li>AI-assisted development</li>
           </ul>
-
         </article>
 
-
         <article class="skill-card">
-
           <span class="skill-index">04</span>
-
           <h3>Working strengths</h3>
-
           <ul>
             <li>Problem solving</li>
             <li>Writing clear prompts</li>
             <li>Self-directed learning</li>
             <li>Communication</li>
           </ul>
-
         </article>
 
       </div>
@@ -345,22 +304,17 @@
       <div class="section-heading section-heading-row">
 
         <div>
-
           <p class="eyebrow">
             <span></span> SELECTED WORK
           </p>
-
           <h2>Projects I've built</h2>
-
         </div>
 
         <a class="text-link"
            href="https://github.com/wesambainnocent2401"
            target="_blank"
            rel="noopener noreferrer">
-
           More on GitHub ↗
-
         </a>
 
       </div>
@@ -372,20 +326,13 @@
         <article class="project-card">
 
           <div class="project-topline">
-
             <span class="project-number">PROJECT 01</span>
-
-            <span class="project-status">
-              <i></i> Live
-            </span>
-
+            <span class="project-status"><i></i> Live</span>
           </div>
 
           <h3>StockFlow</h3>
 
-          <p class="project-type">
-            Inventory management web app
-          </p>
+          <p class="project-type">Inventory management web app</p>
 
           <p>
             A tool designed to help small and medium businesses
@@ -412,25 +359,19 @@
           </div>
 
           <div class="project-actions">
-
             <a class="button button-primary button-small"
                href="https://stockflow-wesamba.netlify.app/app#dashboard"
                target="_blank"
                rel="noopener noreferrer">
-
               Open live app ↗
-
             </a>
 
             <a class="button button-outline button-small"
                href="https://github.com/wesambainnocent2401"
                target="_blank"
                rel="noopener noreferrer">
-
               GitHub ↗
-
             </a>
-
           </div>
 
         </article>
@@ -440,20 +381,13 @@
         <article class="project-card">
 
           <div class="project-topline">
-
             <span class="project-number">PROJECT 02</span>
-
-            <span class="project-status">
-              <i></i> Version 1
-            </span>
-
+            <span class="project-status"><i></i> Version 1</span>
           </div>
 
           <h3>JobConnect</h3>
 
-          <p class="project-type">
-            Job board platform
-          </p>
+          <p class="project-type">Job board platform</p>
 
           <p>
             A platform concept connecting employers with job seekers.
@@ -481,25 +415,19 @@
           </div>
 
           <div class="project-actions">
-
             <a class="button button-primary button-small"
                href="https://wesambainnocent2401.github.io/Jobconnect/"
                target="_blank"
                rel="noopener noreferrer">
-
               Open live app ↗
-
             </a>
 
             <a class="button button-outline button-small"
                href="https://github.com/wesambainnocent2401/Jobconnect"
                target="_blank"
                rel="noopener noreferrer">
-
               GitHub ↗
-
             </a>
-
           </div>
 
         </article>
@@ -559,20 +487,15 @@
           or advice for a student developer? Send me a message.
         </p>
 
-        <a class="contact-email"
-           href="mailto:wesambainnocent0@gmail.com">
-
+        <a class="contact-email" href="mailto:wesambainnocent0@gmail.com">
           ✉ wesambainnocent0@gmail.com
-
         </a>
 
         <a class="contact-github"
            href="https://github.com/wesambainnocent2401"
            target="_blank"
            rel="noopener noreferrer">
-
           GH github.com/wesambainnocent2401
-
         </a>
 
       </div>
@@ -585,7 +508,6 @@
 
           <div class="field">
             <label for="name">Your name</label>
-
             <input
               id="name"
               name="name"
@@ -597,7 +519,6 @@
 
           <div class="field">
             <label for="email">Email address</label>
-
             <input
               id="email"
               name="email"
@@ -611,31 +532,25 @@
 
 
         <div class="field">
-
           <label for="message">Your message</label>
-
           <textarea
             id="message"
             name="message"
             rows="5"
             maxlength="3000"
             required></textarea>
-
         </div>
 
 
         <!-- Anti-spam field -->
         <div class="trap-wrap" aria-hidden="true">
-
           <label for="website">Leave this field empty</label>
-
           <input
             id="website"
             name="website"
             type="text"
             tabindex="-1"
             autocomplete="off">
-
         </div>
 
 
@@ -649,9 +564,7 @@
             class="button button-primary"
             type="submit"
             id="send-btn">
-
             Send message <span>↗</span>
-
           </button>
 
         </div>
@@ -671,22 +584,17 @@
   <footer class="site-footer">
 
     <a class="brand" href="#home">
-
       <span class="brand-mark">WI<span>.</span></span>
-
       <span>Wesamba <b>Innocent</b></span>
-
     </a>
 
     <p>
       © <span id="year"></span> Wesamba Innocent · Built in Kenya.
     </p>
 
-    <a class="back-top" href="#home">
-      Back to top ↑
-    </a>
+    <a class="back-top" href="#home">Back to top ↑</a>
 
   </footer>
 
 </body>
-                                         </html>
+</html>
