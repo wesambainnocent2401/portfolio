@@ -5,11 +5,9 @@
 
 /* =========================================
    SUPABASE CONFIGURATION
+   The publishable key is designed for frontend use.
+   Keep Row Level Security enabled in Supabase.
 ========================================= */
-
-// Using the credentials from your original script.
-// The publishable key is designed for frontend use.
-// Keep Row Level Security enabled in Supabase.
 
 const SUPABASE_URL = "https://ifewunkywpkaikhbobbv.supabase.co";
 
@@ -27,26 +25,14 @@ function initializeSupabase() {
   }
 
   try {
-
-    db = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_ANON_KEY
-    );
-
-    console.log("Supabase initialized successfully.");
-
+    db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     return true;
-
   } catch (error) {
-
     console.error("Supabase initialization failed:", error);
-
     return false;
-
   }
 
 }
-
 
 initializeSupabase();
 
@@ -68,7 +54,7 @@ if (yearElement) {
 
 const menuToggle = document.getElementById("menu-toggle");
 const siteNav = document.getElementById("site-nav");
-const navLinks = document.querySelectorAll(".nav-link");
+const navLinks = document.querySelectorAll(".site-nav a");
 
 
 if (menuToggle && siteNav) {
@@ -77,10 +63,7 @@ if (menuToggle && siteNav) {
 
     const isOpen = siteNav.classList.toggle("open");
 
-    menuToggle.setAttribute(
-      "aria-expanded",
-      String(isOpen)
-    );
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
 
   });
 
@@ -128,10 +111,13 @@ function updateThemeButton() {
 
   if (!themeToggle) return;
 
-  const isLight =
-    document.body.classList.contains("light-theme");
+  const isLight = document.body.classList.contains("light-theme");
 
-  themeToggle.textContent = isLight ? "☾" : "☀";
+  const icon = themeToggle.querySelector(".theme-icon");
+
+  if (icon) {
+    icon.textContent = isLight ? "☾" : "☀";
+  }
 
   themeToggle.setAttribute(
     "aria-label",
@@ -143,22 +129,19 @@ function updateThemeButton() {
 
 function loadSavedTheme() {
 
-  const savedTheme = localStorage.getItem("portfolio-theme");
+  let savedTheme = null;
 
-  if (savedTheme === "light") {
-
-    document.body.classList.add("light-theme");
-
-  } else {
-
-    document.body.classList.remove("light-theme");
-
+  try {
+    savedTheme = localStorage.getItem("portfolio-theme");
+  } catch (error) {
+    savedTheme = null;
   }
+
+  document.body.classList.toggle("light-theme", savedTheme === "light");
 
   updateThemeButton();
 
 }
-
 
 loadSavedTheme();
 
@@ -169,13 +152,13 @@ if (themeToggle) {
 
     document.body.classList.toggle("light-theme");
 
-    const isLight =
-      document.body.classList.contains("light-theme");
+    const isLight = document.body.classList.contains("light-theme");
 
-    localStorage.setItem(
-      "portfolio-theme",
-      isLight ? "light" : "dark"
-    );
+    try {
+      localStorage.setItem("portfolio-theme", isLight ? "light" : "dark");
+    } catch (error) {
+      // Storage unavailable (private mode); the theme still switches.
+    }
 
     updateThemeButton();
 
@@ -216,15 +199,10 @@ if ("IntersectionObserver" in window) {
       });
 
     },
-    {
-      threshold: 0.35
-    }
+    { threshold: 0.35 }
   );
 
-
-  sections.forEach((section) => {
-    sectionObserver.observe(section);
-  });
+  sections.forEach((section) => sectionObserver.observe(section));
 
 }
 
@@ -234,46 +212,39 @@ if ("IntersectionObserver" in window) {
 ========================================= */
 
 const contactForm = document.getElementById("contact-form");
-
 const formStatus = document.getElementById("form-status");
+const sendButton = document.getElementById("send-btn");
 
-const submitButton = contactForm
-  ? contactForm.querySelector(".submit-btn")
-  : null;
-
-const buttonText = contactForm
-  ? contactForm.querySelector(".button-text")
-  : null;
-
-const buttonLoading = contactForm
-  ? contactForm.querySelector(".button-loading")
-  : null;
+const sendButtonDefaultHTML = sendButton ? sendButton.innerHTML : "";
 
 
+// type: "success" | "error" | "" (neutral)
 function showStatus(message, type) {
 
   if (!formStatus) return;
 
   formStatus.textContent = message;
 
-  formStatus.className = `form-status ${type}`;
+  if (type === "success") {
+    formStatus.className = "ok";
+  } else if (type === "error") {
+    formStatus.className = "err";
+  } else {
+    formStatus.className = "";
+  }
 
 }
 
 
 function setSubmitting(isSubmitting) {
 
-  if (!submitButton) return;
+  if (!sendButton) return;
 
-  submitButton.disabled = isSubmitting;
+  sendButton.disabled = isSubmitting;
 
-  if (buttonText) {
-    buttonText.hidden = isSubmitting;
-  }
-
-  if (buttonLoading) {
-    buttonLoading.hidden = !isSubmitting;
-  }
+  sendButton.innerHTML = isSubmitting
+    ? "Sending..."
+    : sendButtonDefaultHTML;
 
 }
 
@@ -286,7 +257,7 @@ if (contactForm) {
 
     showStatus("", "");
 
-    // Basic bot filtering.
+    // Basic bot filtering (hidden field must stay empty).
     const websiteField = contactForm.elements["website"];
 
     if (websiteField && websiteField.value.trim() !== "") {
@@ -296,62 +267,36 @@ if (contactForm) {
 
 
     const name = contactForm.elements["name"].value.trim();
-
     const email = contactForm.elements["email"].value.trim();
-
     const message = contactForm.elements["message"].value.trim();
 
 
-    // Validate required fields.
     if (!name || !email || !message) {
-
-      showStatus(
-        "Please complete all the required fields.",
-        "error"
-      );
-
+      showStatus("Please complete all the required fields.", "error");
       return;
-
     }
 
 
     if (name.length > 100 || email.length > 254 || message.length > 3000) {
-
-      showStatus(
-        "One or more fields exceed the allowed length.",
-        "error"
-      );
-
+      showStatus("One or more fields exceed the allowed length.", "error");
       return;
-
     }
 
 
-    // Check email format.
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailPattern.test(email)) {
-
-      showStatus(
-        "Please enter a valid email address.",
-        "error"
-      );
-
+      showStatus("Please enter a valid email address.", "error");
       return;
-
     }
 
 
-    // Check Supabase connection.
     if (!db) {
-
       showStatus(
         "The message service is currently unavailable. Please email me directly.",
         "error"
       );
-
       return;
-
     }
 
 
@@ -362,31 +307,16 @@ if (contactForm) {
 
       const { error } = await db
         .from("messages")
-        .insert([
-          {
-            name: name,
-            email: email,
-            message: message
-          }
-        ]);
-
+        .insert([{ name: name, email: email, message: message }]);
 
       if (error) {
-
         console.error("Supabase submission error:", error);
-
         throw error;
-
       }
 
-
-      showStatus(
-        "Your message has been sent successfully. Thank you!",
-        "success"
-      );
+      showStatus("Your message has been sent successfully. Thank you!", "success");
 
       contactForm.reset();
-
 
     } catch (error) {
 
